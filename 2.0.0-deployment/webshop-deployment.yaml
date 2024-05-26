@@ -17,6 +17,7 @@ spec:
       containers:
         - name: webshop
           image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/webshop:2.0.0
+          imagePullPolicy: Always          
           ports:
             - containerPort: 8080
           env:

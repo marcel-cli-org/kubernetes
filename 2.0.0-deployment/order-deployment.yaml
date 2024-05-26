@@ -17,5 +17,6 @@ spec:
       containers:
         - name: order
           image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/order:2.0.0
+          imagePullPolicy: Always          
           ports:
             - containerPort: 8080
