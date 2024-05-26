@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webshop
+  labels:
+    app: webshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webshop
+  template:
+    metadata:
+      labels:
+        app: webshop
+    spec:
+      containers:
+        - name: webshop
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/webshop:2.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: URL_PREFIX
+              value: "webshop"
+  
+
+                  
