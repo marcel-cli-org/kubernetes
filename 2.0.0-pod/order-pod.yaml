@@ -11,7 +11,7 @@ metadata:
   name: order
 spec:
   containers:
-  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/order:2.0.0
+  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/order:2.0.0
     name: order
     securityContext: {}
 

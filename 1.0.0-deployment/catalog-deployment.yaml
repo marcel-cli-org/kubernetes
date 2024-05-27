@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: catalog
-          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/catalog:1.0.0
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/catalog:1.0.0
           ports:
             - containerPort: 8080

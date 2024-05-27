@@ -11,7 +11,7 @@ metadata:
   name: catalog
 spec:
   containers:
-  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/catalog:2.0.0
+  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/catalog:2.0.0
     name: catalog
     securityContext: {}
 

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     name: customer
-  name: customerwebshop
+  name: customer
 spec:
   ports:
   - port: 8080

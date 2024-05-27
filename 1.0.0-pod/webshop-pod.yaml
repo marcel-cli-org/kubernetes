@@ -10,12 +10,14 @@ metadata:
   name: webshop
 spec:
   containers:
-  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/webshop/webshop:1.0.0
+  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/shop:1.0.0
     name: webshop
     ports:
     - containerPort: 8080
     env:
       - name: URL_PREFIX
-        value: "webshop"   
+        value: "webshop"  
+      - name: URL_SUFFIX
+        value: ""           
 
                   

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     name: catalog
-  name: catalogwebshop
+  name: catalog
 spec:
   ports:
   - port: 8080
