@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   name: customer-green
   labels:
-    app: customer-green
+    app: customer
+    version: green    
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: customer-green
+      app: customer
+      version: green      
   template:
     metadata:
       labels:
-        app: customer-green
+        app: customer
+        version: green        
     spec:
       containers:
         - name: customer-green

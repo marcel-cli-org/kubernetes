@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   name: webshop-blue
   labels:
-    app: webshop-blue
+    app: webshop
+    version: blue
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webshop-blue
+      app: webshop
+      version: blue
   template:
     metadata:
       labels:
-        app: webshop-blue
+        app: webshop
+        version: blue        
     spec:
       containers:
         - name: webshop-blue

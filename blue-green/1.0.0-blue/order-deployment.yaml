@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   name: order-blue
   labels:
-    app: order-blue
+    app: order
+    version: blue
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: order-blue
+      app: order
+      version: blue
   template:
     metadata:
       labels:
-        app: order-blue
+        app: order
+        version: blue        
     spec:
       containers:
         - name: order-blue
