@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-blue
+  labels:
+    app: order-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order-blue
+  template:
+    metadata:
+      labels:
+        app: order-blue
+    spec:
+      containers:
+        - name: order-blue
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/order:1.0.0
+          ports:
+            - containerPort: 8080

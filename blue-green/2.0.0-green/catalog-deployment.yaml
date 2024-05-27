@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-green
+  labels:
+    app: catalog-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: catalog-green
+  template:
+    metadata:
+      labels:
+        app: catalog-green
+    spec:
+      containers:
+        - name: catalog-green
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/catalog:2.0.0
+          imagePullPolicy: Always          
+          ports:
+            - containerPort: 8080

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-blue
+  labels:
+    app: customer-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-blue
+  template:
+    metadata:
+      labels:
+        app: customer-blue
+    spec:
+      containers:
+        - name: customer-blue
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/customer:1.0.0
+          ports:
+            - containerPort: 8080
+

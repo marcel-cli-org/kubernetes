@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webshop-green
+  labels:
+    app: webshop-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webshop-green
+  template:
+    metadata:
+      labels:
+        app: webshop-green
+    spec:
+      containers:
+        - name: webshop-green
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/shop:2.0.0
+          imagePullPolicy: Always          
+          ports:
+            - containerPort: 8080
+          env:
+            - name: URL_PREFIX
+              value: "webshop"
+            - name: URL_SUFFIX
+              value: "-green"                
+  
+
+                  

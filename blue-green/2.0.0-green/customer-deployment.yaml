@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-green
+  labels:
+    app: customer-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-green
+  template:
+    metadata:
+      labels:
+        app: customer-green
+    spec:
+      containers:
+        - name: customer-green
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/customer:2.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+

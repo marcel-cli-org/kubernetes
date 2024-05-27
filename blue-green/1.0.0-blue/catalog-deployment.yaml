@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-blue
+  labels:
+    app: catalog-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: catalog-blue
+  template:
+    metadata:
+      labels:
+        app: catalog-blue
+    spec:
+      containers:
+        - name: catalog-blue
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/catalog:1.0.0
+          ports:
+            - containerPort: 8080
