@@ -1,0 +1,23 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.0.3
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: webshop
+  name: webshop
+spec:
+  containers:
+  - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/shop:2.1.0
+    name: webshop
+    ports:
+    - containerPort: 8080
+    env:
+      - name: URL_PREFIX
+        value: "webshop" 
+      - name: URL_SUFFIX
+        value: ""             
+
+                  
