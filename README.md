@@ -51,7 +51,7 @@ Wechsel in VM
 
     winpty multipass shell microk8s
     
-**Variante b) Windows Subsystem Linux **
+**Variante b) Windows Subsystem Linux**
 
 Wenn nicht bereits erfolgt:
 * [Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install) installieren
