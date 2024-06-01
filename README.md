@@ -3,6 +3,69 @@ Autoshop Kubernetes
 
 [[_TOC_]]
 
+Die folgenden Befehle sind in einer (Ubuntu) Linux Umgebung mit Kubernetes (microk8s) ausführen.
+
+Installation
+------------
+
+**Variante a) eigene VM** 
+
+Dazu erstellen wir eine neue VM mit Ubuntu und Kubernetes (microk8s).
+
+Das Cloud-init Script sieht wie folgt aus:
+
+    #cloud-config
+    users:
+      - name: ubuntu
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        groups: users, admin
+        home: /home/ubuntu
+        shell: /bin/bash
+        lock_passwd: false
+        plain_text_passwd: 'insecure'        
+    # login ssh and console with password
+    ssh_pwauth: true
+    disable_root: false    
+    packages:
+      - docker.io
+    runcmd:
+        - sudo snap install microk8s --classic 
+        - sudo snap install kubectl --classic
+        - sudo snap install helm --classic
+        - sudo microk8s status --wait-ready
+        - sudo microk8s enable dns hostpath-storage
+        - sudo usermod -a -G microk8s ubuntu
+        - sudo mkdir -p /home/ubuntu/.kube
+        - sudo microk8s config | sudo tee  /home/ubuntu/.kube/config
+        - sudo chown -f -R ubuntu:ubuntu /home/ubuntu/.kube
+        - sudo chmod 600 /home/ubuntu/.kube/config
+     
+Z.B. mit `multipass`
+
+    git clone https://gitlab.com/ch-mc-b/autoshop-ms/infra/kubernetes-templates.git
+    cd kubernetes-templates 
+    multipass launch --name microk8s -c4 -m6GB -d32GB --cloud-init cloud-init.yaml   
+    multipass set client.primary-name=microk8s
+    
+Wechsel in VM
+
+    winpty multipass shell microk8s
+    
+**Variante b) Windows Subsystem Linux **
+
+Wenn nicht bereits erfolgt:
+* [Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install) installieren
+* WSL aktivieren `wsl --install`
+* Terminal starten und mittels Pulldown (Pfeil nach unten, ca. in der Mitte) in `Ubuntu` Linux wechseln
+* Wechsel in `Ubuntu` Linux und Befehle von `cloud-init` Script oben ab `runcmd` ohne voranstehendes `-` ausführen
+  
+Links:
+* [Install MicroK8s on WSL2](https://microk8s.io/docs/install-wsl2)  
+ 
+
+AutoShop Services Bereitstellen
+-------------------------------
+
 YAML Datei um die [AutoShop MS](https://gitlab.com/ch-mc-b/autoshop-ms/app) Applikation zu Bereitzustellen (Deploy).
 
 Um die Applikation zu Bereitzustellen (Deploy) zuerst Services und Ingresses einrichten
@@ -66,7 +129,7 @@ Starten mittels:
 
 Ansprechen mittels
 
-    [https://container.mshome.net:8443](https://container.mshome.net:8443)
+    [https://microk8s.mshome.net:8443](https://microk8s.mshome.net:8443)
 
 Rolling Update
 --------------
