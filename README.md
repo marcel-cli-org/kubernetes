@@ -51,6 +51,11 @@ Wechsel in VM
 
     winpty multipass shell microk8s
     
+Optional: Verzeichnis in VM mounten um z.B. lokale Windows YAML Dateien direkt ansprechen zu können
+
+    multipass set local.privileged-mounts=true
+    multipass mount C:/ microk8s:/home/ubuntu/c
+    
 **Variante b) Windows Subsystem Linux**
 
 Wenn nicht bereits erfolgt:
