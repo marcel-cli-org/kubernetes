@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  labels:
+    app: order
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/order:3.0.0
+          imagePullPolicy: Always          
+          ports:
+            - containerPort: 8080
