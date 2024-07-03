@@ -1,0 +1,46 @@
+# Ignoriere Dateien und Verzeichnisse, die im Git-Repository enthalten sind
+.git
+.gitignore
+
+# Node.js spezifische Dateien und Verzeichnisse
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Python spezifische Dateien und Verzeichnisse
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.whl
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Java spezifische Dateien und Verzeichnisse
+*.class
+*.jar
+*.war
+*.ear
+
+# Betriebssystem spezifische Dateien
+.DS_Store
+Thumbs.db
+
+# Logs und temporäre Dateien
+logs
+*.log
+tmp
+*.tmp
+
+# IDE spezifische Dateien
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Docker spezifische Dateien (falls vorhanden)
+.dockerignore
+Dockerfile
