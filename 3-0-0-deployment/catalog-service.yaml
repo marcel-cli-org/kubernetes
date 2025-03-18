@@ -3,8 +3,8 @@ kind: Service
 metadata:
   labels:
     name: catalog
+    tier: microservice  
   name: catalog
-  tier: microservice  
 spec:
   ports:
   - port: 8080
