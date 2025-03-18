@@ -4,6 +4,7 @@ metadata:
   labels:
     name: customer
   name: customer
+  tier: microservice    
 spec:
   ports:
   - port: 8080

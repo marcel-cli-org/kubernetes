@@ -4,6 +4,7 @@ metadata:
   name: customer
   labels:
     app: customer
+    tier: microservice    
 spec:
   replicas: 3
   selector:

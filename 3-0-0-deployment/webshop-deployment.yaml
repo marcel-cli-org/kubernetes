@@ -4,6 +4,7 @@ metadata:
   name: webshop
   labels:
     app: webshop
+    tier: microservice    
 spec:
   replicas: 1
   selector:

@@ -4,6 +4,7 @@ metadata:
   labels:
     name: webshop
   name: webshop
+  tier: microservice    
 spec:
   ports:
   - port: 8080

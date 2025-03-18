@@ -4,6 +4,7 @@ metadata:
   labels:
     name: catalog
   name: catalog
+  tier: microservice  
 spec:
   ports:
   - port: 8080

@@ -4,6 +4,7 @@ metadata:
   name: catalog
   labels:
     app: catalog
+    tier: microservice    
 spec:
   replicas: 3
   selector:
