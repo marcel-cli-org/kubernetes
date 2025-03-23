@@ -44,12 +44,15 @@ Z.B. mit `multipass`
 
     git clone https://gitlab.com/ch-mc-b/autoshop-ms/infra/kubernetes-templates.git
     cd kubernetes-templates 
-    multipass launch --name microk8s -c4 -m6GB -d32GB --cloud-init cloud-init.yaml   
+    
+    multipass delete microk8s --purge
+    multipass launch --name microk8s -c2 -m8GB -d32GB --cloud-init cloud-init.yaml   
     multipass set client.primary-name=microk8s
+    multipass mount D:/Sourcen/ws microk8s:/home/ubuntu/ws    
     
 Wechsel in VM
 
-    winpty multipass shell microk8s
+    multipass shell microk8s
     
 Optional: Verzeichnis in VM mounten um z.B. lokale Windows YAML Dateien direkt ansprechen zu können
 

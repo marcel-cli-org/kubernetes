@@ -16,7 +16,7 @@ Als Cloudevents Endpunkt
     
 Testen
 
-curl -X POST http://localhost:9090/ \
+curl -X POST http://localhost:9090/event \
 -H "Content-Type: application/json" \
 -H "ce-id: 1234" \
 -H "ce-source: /mycontext" \
@@ -30,6 +30,14 @@ curl -X POST http://localhost:9090/ \
   },
   "subject": "example"
 }'
+
+curl -v -X POST http://localhost:9090/event \
+-H "Ce-Id: say-hello" \
+-H "Ce-Specversion: 1.0" \
+-H "Ce-Type: bonjour" \
+-H "Ce-Source: mycurl" \
+-H "Content-Type: application/json" \
+-d '{"key":"from a a"}'
 
 
 curl -v -X POST http://broker-ingress.knative-eventing.svc.cluster.local/ms-brkr/default \

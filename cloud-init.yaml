@@ -10,28 +10,11 @@ users:
 # login ssh and console with password
 ssh_pwauth: true
 disable_root: false    
-packages:
-  - docker.io
 runcmd:
-    - sudo usermod -a -G docker ubuntu
-    - sudo snap install microk8s --classic 
-    - sudo snap install kubectl --classic
-    - sudo snap install helm --classic
-    - sudo microk8s status --wait-ready
-    - sudo microk8s enable dns hostpath-storage
-    - sudo usermod -a -G microk8s ubuntu
-    - sudo mkdir -p /home/ubuntu/.kube
-    - sudo microk8s config | sudo tee  /home/ubuntu/.kube/config
-    - sudo chown -f -R ubuntu:ubuntu /home/ubuntu/.kube
-    - sudo chmod 600 /home/ubuntu/.kube/config
-    - sudo microk8s kubectl apply -f https://raw.githubusercontent.com/mc-b/duk/master/addons/dashboard-skip-login-no-ingress.yaml    
-    - sudo microk8s kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1.14.1/serving-crds.yaml
-    - sudo microk8s kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1.14.1/serving-core.yaml    
-    - sudo microk8s kubectl apply -f https://github.com/knative/net-kourier/releases/download/knative-v1.14.0/kourier.yaml
-    - sudo microk8s kubectl patch configmap/config-network --namespace knative-serving --type merge --patch '{"data":{"ingress-class":"kourier.ingress.networking.knative.dev"}}'
-    - sudo microk8s kubectl patch configmap/config-domain --namespace knative-serving --type merge --patch '{"data":{"microk8s.mshome.net":""}}'  
-    - sudo curl -o /usr/local/bin/kn -sL https://github.com/knative/client/releases/download/knative-v1.14.0/kn-linux-amd64
-    - sudo chmod +x /usr/local/bin/kn    
-    - wget https://github.com/stern/stern/releases/download/v1.22.0/stern_1.22.0_linux_amd64.tar.gz
-    - tar xvzf stern_1.22.0_linux_amd64.tar.gz
-    - sudo mv stern /usr/local/bin
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/docker.sh | bash -  
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/containers.sh | bash -  
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/microk8s.sh | bash -
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/microk8saddons.sh | bash -
+  - sudo su - ubuntu -c "curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/jupyter-notebook.sh | bash -"  
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/k8stools.sh | bash -     
+
