@@ -25,7 +25,14 @@ spec:
             - name: URL_PREFIX
               value: "webshop"
             - name: URL_SUFFIX
-              value: ""                
+              value: ""   
+          resources:
+            requests:
+              cpu: "25m"
+              memory: "96Mi"
+            limits:
+              cpu: "50m"
+              memory: "192Mi"                            
   
 
                   

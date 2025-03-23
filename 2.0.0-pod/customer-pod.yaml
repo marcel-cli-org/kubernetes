@@ -14,4 +14,11 @@ spec:
   - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/customer:2.0.0
     name: customer
     securityContext: {}
+    resources:
+      requests:
+        cpu: "25m"
+        memory: "96Mi"
+      limits:
+        cpu: "50m"
+        memory: "192Mi"     
 

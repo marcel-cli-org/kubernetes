@@ -14,4 +14,11 @@ spec:
   - image: registry.gitlab.com/ch-mc-b/autoshop-ms/app/shop/order:1.0.0
     name: order
     securityContext: {}
+    resources:
+      requests:
+        cpu: "25m"
+        memory: "96Mi"
+      limits:
+        cpu: "50m"
+        memory: "192Mi"       
 
